@@ -20,18 +20,12 @@ const DamageList = ({ claims }: DamageListProps) => {
           <thead className="bg-gray-50">
             <tr>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Numer Sprawy
+                Klient / PESEL
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Klient
+                Ubezpieczyciel / Typ
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Typ Szkody
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Wartość
-              </th>
-               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Status
               </th>
               <th scope="col" className="relative px-6 py-3">
@@ -43,16 +37,13 @@ const DamageList = ({ claims }: DamageListProps) => {
             {claims.map((claim) => (
               <tr key={claim.id} className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">{claim.numerSprawy}</div>
+                  <div className="text-sm font-medium text-gray-900">{claim.klient}</div>
+                  <div className="text-sm text-gray-500">{claim.pesel}</div>
+                  <div className="text-sm text-gray-500">{claim.telefon}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-600">{claim.klient}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                  {claim.typSzkody}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                  {claim.wartosc.toLocaleString('pl-PL')} zł
+                  <div className="text-sm text-gray-900">{claim.towarzystwoUbezpieczeniowe}</div>
+                  <div className="text-sm text-gray-500">{claim.typUbezpieczenia}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusColors[claim.status]}`}>
