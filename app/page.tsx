@@ -1,6 +1,6 @@
 import Header from "@/app/components/Header";
-import DamageList from "@/app/components/DamageList";
 import { przykladoweSzkody } from "@/app/data/claims";
+import SzkodaCard from "@/app/components/SzkodaCard";
 
 export default function HomePage() {
   return (
@@ -23,7 +23,11 @@ export default function HomePage() {
           </div>
         </div>
 
-        <DamageList claims={przykladoweSzkody} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {przykladoweSzkody.map((szkoda) => (
+            <SzkodaCard key={szkoda.id} claim={szkoda} />
+          ))}
+        </div>
       </div>
     </main>
   );
