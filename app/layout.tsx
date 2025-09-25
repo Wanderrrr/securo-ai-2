@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "System Rejestracji",
-  description: "Nowy system do zarzadzania rejestracjami",
+  title: "Securo AI - Ewidencja Szkód",
+  description: "System do zarządzania szkodami i roszczeniami",
 };
 
 export default function RootLayout({

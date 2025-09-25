@@ -1,9 +1,16 @@
 import React from 'react';
-import { DamageClaim } from '@/app/data/claims';
+import { Szkoda } from '@/app/data/claims';
 
 interface DamageListProps {
-  claims: DamageClaim[];
+  claims: Szkoda[];
 }
+
+const statusColors: { [key: string]: string } = {
+  'Nowa': 'bg-blue-100 text-blue-800',
+  'W toku': 'bg-yellow-100 text-yellow-800',
+  'Zakończona': 'bg-green-100 text-green-800',
+};
+
 
 const DamageList = ({ claims }: DamageListProps) => {
   return (
@@ -13,19 +20,19 @@ const DamageList = ({ claims }: DamageListProps) => {
           <thead className="bg-gray-50">
             <tr>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Imię i nazwisko / Nazwa firmy
+                Numer Sprawy
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Telefon
+                Klient
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Numer rej.
+                Typ Szkody
               </th>
               <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Tytuł usługi
+                Wartość
               </th>
                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Data
+                Status
               </th>
               <th scope="col" className="relative px-6 py-3">
                 <span className="sr-only">Akcje</span>
@@ -36,25 +43,25 @@ const DamageList = ({ claims }: DamageListProps) => {
             {claims.map((claim) => (
               <tr key={claim.id} className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">{claim.clientName}</div>
+                  <div className="text-sm font-medium text-gray-900">{claim.numerSprawy}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-600">{claim.phoneNumber}</div>
+                  <div className="text-sm text-gray-600">{claim.klient}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                  {claim.typSzkody}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                  {claim.wartosc.toLocaleString('pl-PL')} zł
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                    {claim.registrationNumber}
+                  <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusColors[claim.status]}`}>
+                    {claim.status}
                   </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                  {claim.serviceType}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                  {new Date(claim.date).toLocaleDateString('pl-PL')}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <a href="#" className="text-blue-600 hover:text-blue-900">
-                    Edytuj
+                    Szczegóły
                   </a>
                 </td>
               </tr>

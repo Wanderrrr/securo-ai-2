@@ -1,6 +1,6 @@
 import Header from "@/app/components/Header";
 import DamageList from "@/app/components/DamageList";
-import { sampleClaims } from "@/app/data/claims";
+import { przykladoweSzkody } from "@/app/data/claims";
 
 export default function HomePage() {
   return (
@@ -10,19 +10,20 @@ export default function HomePage() {
         <div className="flex justify-between items-center mb-6">
           <div>
             <h1 className="text-2xl font-bold text-gray-800 mb-1">
-              Formularz Opłat za Rejestrację Pojazdu
+              Ewidencja Szkód
             </h1>
             <p className="text-gray-500">
-              Kalkulacja i rozliczenie opłat urzędowych
+              Dashboard do zarządzania sprawami
             </p>
           </div>
           <div>
-            {/* Action buttons can go here */}
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+              + Dodaj nową szkodę
+            </button>
           </div>
         </div>
 
-        {/* The list of claims will now be rendered here */}
-        <DamageList claims={sampleClaims} />
+        <DamageList claims={przykladoweSzkody} />
       </div>
     </main>
   );

@@ -1,37 +1,45 @@
 // Definicje typów
-export interface DamageClaim {
+export interface Szkoda {
   id: string;
-  clientName: string;
-  serviceType: string;
-  phoneNumber: string;
-  registrationNumber: string;
-  date: string;
+  numerSprawy: string;
+  klient: string;
+  telefon: string;
+  typSzkody: 'Komunikacyjna' | 'Nieruchomość' | 'Ubezpieczenie';
+  status: 'Nowa' | 'W toku' | 'Zakończona';
+  wartosc: number;
+  dataZgloszenia: string;
 }
 
 // Przykładowe dane
-export const sampleClaims: DamageClaim[] = [
+export const przykladoweSzkody: Szkoda[] = [
   {
     id: '1',
-    clientName: 'Jan Kowalski',
-    serviceType: 'Rejestracja pojazdu z zagranicy',
-    phoneNumber: '501 123 456',
-    registrationNumber: 'WX 12345',
-    date: '2025-09-24',
+    numerSprawy: 'SC/2024/001',
+    klient: 'Jan Kowalski',
+    telefon: '501 123 456',
+    typSzkody: 'Komunikacyjna',
+    status: 'W toku',
+    wartosc: 15000,
+    dataZgloszenia: '2025-09-24',
   },
   {
     id: '2',
-    clientName: 'Anna Nowak / Firma XYZ',
-    serviceType: 'Przerejestrowanie pojazdu krajowego',
-    phoneNumber: '602 234 567',
-    registrationNumber: 'KRA 54321',
-    date: '2025-09-23',
+    numerSprawy: 'SC/2024/002',
+    klient: 'Anna Nowak / Firma XYZ',
+    telefon: '602 234 567',
+    typSzkody: 'Nieruchomość',
+    status: 'Nowa',
+    wartosc: 25000,
+    dataZgloszenia: '2025-09-23',
   },
   {
     id: '3',
-    clientName: 'Piotr Wiśniewski',
-    serviceType: 'Odbiór twardego dowodu rejestracyjnego',
-    phoneNumber: '703 345 678',
-    registrationNumber: 'GD 67890',
-    date: '2025-09-22',
+    numerSprawy: 'SC/2024/003',
+    klient: 'Piotr Wiśniewski',
+    telefon: '703 345 678',
+    typSzkody: 'Ubezpieczenie',
+    status: 'Zakończona',
+    wartosc: 8000,
+    dataZgloszenia: '2025-09-22',
   },
 ];
